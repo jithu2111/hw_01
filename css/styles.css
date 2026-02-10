@@ -465,7 +465,7 @@ p {
     box-shadow: 0 8px 24px rgba(40, 54, 24, 0.15);
 }
 
-.skills-category h3 {
+.skills-category h2 {
     color: var(--color-primary);
     padding-bottom: var(--spacing-sm);
     border-bottom: none;
@@ -476,7 +476,7 @@ p {
     gap: var(--spacing-xs);
 }
 
-.skills-category h3::before {
+.skills-category h2::before {
     content: '●';
     color: var(--color-secondary);
     font-size: 0.8rem;
@@ -551,8 +551,8 @@ p {
     box-shadow: 0 8px 24px rgba(40, 54, 24, 0.15);
 }
 
-.contact-info h3,
-.social-links h3 {
+.contact-info h2,
+.social-links h2 {
     color: var(--color-primary);
     padding-bottom: var(--spacing-sm);
     border-bottom: none;
@@ -563,11 +563,11 @@ p {
     gap: var(--spacing-xs);
 }
 
-.contact-info h3::before {
+.contact-info h2::before {
     font-size: 1.2rem;
 }
 
-.social-links h3::before {
+.social-links h2::before {
     font-size: 1.2rem;
 }
 
@@ -582,7 +582,7 @@ p {
     background-color: var(--color-background);
 }
 
-.contact-item h4 {
+.contact-item h3 {
     color: var(--color-secondary);
     font-family: var(--font-secondary);
     font-weight: 600;
