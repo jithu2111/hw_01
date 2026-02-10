@@ -81,6 +81,10 @@ p {
     min-height: calc(100vh - var(--header-height) - 100px);
 }
 
+.main-content > *:first-child {
+    margin-top: 0;
+}
+
 /* ===========================
    Header & Navigation
    =========================== */
@@ -89,10 +93,11 @@ p {
     top: 0;
     left: 0;
     right: 0;
+    width: 100%;
     background-color: var(--color-primary);
     height: var(--header-height);
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .nav-container {
@@ -103,37 +108,82 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 12px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
 }
 
 .logo a {
     font-family: var(--font-primary);
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
     color: var(--color-background);
-    transition: color var(--transition-speed);
+    letter-spacing: 0.5px;
+    transition: color var(--transition-speed), transform var(--transition-speed);
+    display: inline-block;
 }
 
 .logo a:hover {
-    color: var(--color-tertiary);
+    color: var(--color-secondary);
+    transform: translateY(-2px);
 }
 
 .nav-links {
     display: flex;
-    gap: var(--spacing-md);
+    gap: var(--spacing-xs);
+    align-items: center;
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
 }
 
 .nav-links a {
     color: var(--color-background);
     font-weight: 500;
-    padding: var(--spacing-xs) var(--spacing-sm);
-    transition: color var(--transition-speed), background-color var(--transition-speed);
-    border-radius: 4px;
+    font-size: 1rem;
+    padding: 0.75rem var(--spacing-sm);
+    transition: all var(--transition-speed);
+    border-radius: 6px;
+    display: inline-block;
+    position: relative;
 }
 
-.nav-links a:hover,
+/* Hover effect with underline animation */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 80%;
+    height: 2px;
+    background-color: var(--color-secondary);
+    transition: transform var(--transition-speed);
+}
+
+.nav-links a:hover {
+    color: var(--color-background);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-links a:hover::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+/* Active state - filled background */
 .nav-links a.active {
     color: var(--color-primary);
     background-color: var(--color-background);
+    font-weight: 600;
+}
+
+.nav-links a.active::after {
+    display: none;
 }
 
 /* ===========================
@@ -164,7 +214,14 @@ p {
 
 .hero-subtitle {
     font-size: 1.25rem;
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.hero-location {
+    font-size: 1rem;
     color: var(--color-tertiary);
+    margin-top: var(--spacing-xs);
 }
 
 .about {
@@ -418,14 +475,51 @@ p {
 /* ===========================
    Responsive Design
    =========================== */
-@media (max-width: 768px) {
+@media (max-width: 968px) {
+    :root {
+        --header-height: 70px;
+    }
+
+    .logo a {
+        font-size: 1.5rem;
+    }
+
     .nav-links {
-        gap: var(--spacing-sm);
+        gap: 0.3rem;
     }
 
     .nav-links a {
-        padding: var(--spacing-xs);
+        padding: 0.6rem 0.7rem;
         font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --header-height: 65px;
+        --spacing-md: 1.5rem;
+    }
+
+    .nav-container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .logo a {
+        font-size: 1.3rem;
+    }
+
+    .nav-links {
+        gap: 0.2rem;
+    }
+
+    .nav-links a {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.85rem;
+    }
+
+    /* Reduce underline effect on mobile */
+    .nav-links a::after {
+        height: 1.5px;
     }
 
     .skills .container,
@@ -435,5 +529,44 @@ p {
 
     .hero h1 {
         font-size: 2rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --header-height: 60px;
+    }
+
+    .logo a {
+        font-size: 1.1rem;
+    }
+
+    .nav-links {
+        gap: 0.1rem;
+    }
+
+    .nav-links a {
+        padding: 0.4rem 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .project-card {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .project-image {
+        height: 200px;
     }
 }
