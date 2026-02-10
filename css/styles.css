@@ -430,50 +430,81 @@ p {
    =========================== */
 .skills {
     padding: var(--spacing-xl) 0;
+    background: linear-gradient(135deg, var(--color-background) 0%, #e8e8dc 100%);
 }
 
 .skills .container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-lg);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
 }
 
 .skills-category {
     background-color: var(--color-white);
     padding: var(--spacing-md);
-    border: 2px solid var(--color-tertiary);
-    border-radius: 8px;
-    transition: border-color var(--transition-speed);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(40, 54, 24, 0.08);
+    transition: all var(--transition-speed);
+    position: relative;
+    overflow: hidden;
+}
+
+.skills-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
 }
 
 .skills-category:hover {
-    border-color: var(--color-secondary);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(40, 54, 24, 0.15);
 }
 
 .skills-category h3 {
     color: var(--color-primary);
     padding-bottom: var(--spacing-sm);
-    border-bottom: 2px solid var(--color-primary);
+    border-bottom: none;
     margin-bottom: var(--spacing-md);
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.skills-category h3::before {
+    content: '●';
+    color: var(--color-secondary);
+    font-size: 0.8rem;
 }
 
 .skills-list {
     list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
 }
 
 .skills-list li {
-    padding: var(--spacing-xs) 0;
-    padding-left: var(--spacing-sm);
-    position: relative;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-background);
+    border-radius: 20px;
     color: var(--color-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all var(--transition-speed);
+    border: 1px solid transparent;
 }
 
-.skills-list li::before {
-    content: "▸";
-    position: absolute;
-    left: 0;
-    color: var(--color-primary);
-    font-weight: bold;
+.skills-list li:hover {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    border-color: var(--color-primary);
+    transform: scale(1.05);
 }
 
 /* ===========================
