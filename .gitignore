@@ -1,1 +1,15 @@
+# IDE
 .idea
+.vscode
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Dependencies (if needed later)
+node_modules/
+
+# Logs
+*.log
+
+README.md
